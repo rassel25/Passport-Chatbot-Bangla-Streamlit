@@ -15,7 +15,7 @@ def generate_answer():
     st.session_state.history.append({"message": message_bot, "is_user": False})
 
 
-st.text_input("নিচে টাইপ করুন", key="input_text", on_change=generate_answer)
+st.text_input("নিচে আপনার পাসপোর্ট সংক্রান্ত প্রশ্নটি লিখুন", key="input_text", on_change=generate_answer)
 
 for chat in st.session_state.history:
     message(**chat)  # unpacking
