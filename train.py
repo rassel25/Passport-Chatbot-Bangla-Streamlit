@@ -11,11 +11,11 @@ with open('intents.json','r', encoding="utf8") as json_data:
     intents = json.load(json_data)
 
 print(intents)
-
+# Initializes empty lists to store all words, tags, and pattern-tag pairs.
 all_words = []
 tags = []
 xy = []
-# loop through each sentence in our intents patterns
+# loop through each sentence in our intents patterns. This loop processes each intent, collecting tags, tokenizing patterns, and creating pattern-tag pairs.
 for intent in intents['intents']:
     # tag collection
     tag = intent['tag']
