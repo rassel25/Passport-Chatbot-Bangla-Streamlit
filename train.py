@@ -24,9 +24,23 @@ for intent in intents['intents']:
         # tokenize each word in the sentence
         w = tokenise(pattern)
         # add to our words list. we dont use append bcz w and all_words both are array so we dont want array inside another array
-        all_words.extend(w)
+        all_words.extend(w)   # extend will add each word 
         # add pattern and tag as tuple in our corpus
-        xy.append((w, tag))
+        xy.append((w, tag)) # append will add each sentence/pattern
+
+# Example of extend and append:
+'''{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hello", "Hi there", "How are you?"],
+      "responses": ["Hi!", "Hello!", "How can I help you?"]
+    }
+all_words = ['Hello', 'Hi', 'there', 'How', 'are', 'you']  # the result of extend
+xy = [(['Hello'], 'greeting'),
+    (['Hi', 'there'], 'greeting'),
+    (['How', 'are', 'you'], 'greeting')]  # the result of append
+'''
 
 print(all_words)
 
