@@ -40,6 +40,8 @@ all_words = ['Hello', 'Hi', 'there', 'How', 'are', 'you']  # the result of exten
 xy = [(['Hello'], 'greeting'),
     (['Hi', 'there'], 'greeting'),
     (['How', 'are', 'you'], 'greeting')]  # the result of append
+
+Therefore, append() adds one element, while extend() adds multiple elements.
 '''
 
 print(all_words)
@@ -117,7 +119,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 for epoch in range(num_epochs):
-    for (words, labels) in train_loader:
+    for (words, labels) in train_loader:   #This inner loop iterates over batches of data provided by the train_loader. Each iteration gives a batch of input words and their corresponding labels.
         words = words.to(device)
         labels = labels.to(dtype=torch.long).to(device)
 
@@ -128,9 +130,9 @@ for epoch in range(num_epochs):
         loss = criterion(outputs, labels)
 
         # Backward and optimize
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+        optimizer.zero_grad()  # This resets the gradients of all parameters to zero. It's necessary because PyTorch accumulates gradients by default.
+        loss.backward()  # This computes the gradients of the loss with respect to all parameters in the model.
+        optimizer.step()  # This updates all parameters based on the computed gradients using the Adam optimization algorithm.
 
     if (epoch + 1) % 100 == 0:
         print(f'Epoch [{epoch + 1}/{num_epochs}], Loss: {loss.item():.4f}')
